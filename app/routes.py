@@ -3,7 +3,7 @@ contains view functions that are mapped to their respective URLs;
 passes data to the template for rendering 
 '''
 
-from flask import render_template, flash, redirect
+from flask import render_template, flash, redirect, url_for
 from app import app 
 from app.forms import LoginForm
 
@@ -36,5 +36,5 @@ def login():
         # stores msg to be shown later when rendered 
         flash('Login requested for user {}, remember_me={}'.format(
             form.username.data, form.remeber_me.data)) 
-        return redirect('/index') # navigate to index page 
+        return redirect(url_for('index')) # navigate to index page 
     return render_template('login.html', title='Sign In', form=form)
